@@ -1,14 +1,14 @@
 package ua.training;
 
 public class View {
-    private final String INPUT_PATTERN1 = "Hello";
-    private final String INPUT_PATTERN2 = "world";
+    public static final String INPUT_PATTERN1 = "Hello";
+    public static final String INPUT_PATTERN2 = "world";
 
-    public String getINPUT_PATTERN1() {
-        return INPUT_PATTERN1;
+    public void askUserForInput(String message) {
+        System.out.println("Please print " + message);
     }
 
-    public String getINPUT_PATTERN2() {
-        return INPUT_PATTERN2;
+    public void showFinalMessage(String result){
+        System.out.println("Your input is " + result);
     }
 }

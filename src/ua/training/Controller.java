@@ -19,21 +19,25 @@ public class Controller {
     }
 
     public void processInput() {
-        while (!isUserInputValid){
-        userInput = getUserInput();
-            if(userInput.matches(view.getINPUT_PATTERN1())){
-                validUserInput.add(userInput);
-            }
-        userInput = getUserInput();
-            if(userInput.matches(view.getINPUT_PATTERN2())){
-                validUserInput.add(userInput);
-            }
-
+        checkAndSaveValidInputInList(View.INPUT_PATTERN1);
+         isUserInputValid = false;
+         checkAndSaveValidInputInList(View.INPUT_PATTERN2);
+         view.showFinalMessage(model.collectInputInSentence(validUserInput));
         }
 
-    }
 
     private String getUserInput() {
         return scanner.nextLine();
+    }
+
+    private void checkAndSaveValidInputInList(String inputPattern) {
+        while (!isUserInputValid) {
+            view.askUserForInput(inputPattern);
+            userInput = getUserInput();
+            if (userInput.matches(inputPattern)) {
+                validUserInput.add(userInput);
+                isUserInputValid = true;
+            }
+        }
     }
 }
